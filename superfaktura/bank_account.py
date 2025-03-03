@@ -15,22 +15,19 @@ Functions:
     - (none)
 
 Usage:
-    import superfaktura.bank_account
-
-    # Create an instance of BankAccount
-    bank = superfaktura.bank_account.BankAccount()
-
-    # Retrieve a list of bank accounts
-    accounts = bank.list()
-
-    # Get the default bank account
-    default_account = bank.default()
-
-    # Create or update a bank account
-    data = {"account": "1234567890", "bank_code": "1234567890", "default": True}
-    bank.post(data)
+    >>> import superfaktura.bank_account
+    >>> # Create an instance of BankAccount
+    >>> bank = superfaktura.bank_account.BankAccount()
+    >>> # Retrieve a list of bank accounts
+    >>> accounts = bank.list()
+    >>> # Get the default bank account
+    >>> default_account = bank.default()
+    >>> # Create or update a bank account
+    >>> data = {"account": "1234567890", "bank_code": "1234567890", "default": True}
+    >>> bank.post(data)
 """
 
+import json
 from dataclasses import dataclass, asdict
 from typing import Optional
 
@@ -83,11 +80,11 @@ class BankAccount(SuperFakturaAPI):
         - post: Creates or updates a bank account.
 
     Usage:
-        bank = BankAccount()
-        accounts = bank.list()
-        default_account = bank.default()
-        data = {"account": "1234567890", "bank_code": "1234567890", "default": True}
-        bank.post(data)
+        >>> bank = BankAccount()
+        >>> accounts = bank.list()
+        >>> default_account = bank.default()
+        >>> data = {"account": "1234567890", "bank_code": "1234567890", "default": True}
+        >>> bank.post(data)
     """
 
     def __init__(self):
@@ -96,7 +93,8 @@ class BankAccount(SuperFakturaAPI):
     def list(self) -> dict:
         """Retrieves a list of bank accounts."""
         url = "bank_accounts/index"
-        return self.get(url)
+        bank_accounts = self.get(url)
+        return json.loads(bank_accounts)
 
     def default(self) -> Optional[BankAccountModel]:
         """Retrieves the default bank account."""

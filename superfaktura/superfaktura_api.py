@@ -14,16 +14,13 @@ Functions:
     - post: Creates or updates data in the SuperFaktura API.
 
 Usage:
-    import superfaktura.superfaktura_api
-
-    # Create an instance of SuperFakturaAPI
-    api = superfaktura.superfaktura_api.SuperFakturaAPI()
-
-    # Retrieve data from the SuperFaktura API
-    data = api.get('endpoint')
-
-    # Create or update data in the SuperFaktura API
-    api.post('endpoint', data)
+    >>> import superfaktura.superfaktura_api
+    >>> # Create an instance of SuperFakturaAPI
+    >>> api = superfaktura.superfaktura_api.SuperFakturaAPI()
+    >>> # Retrieve data from the SuperFaktura API
+    >>> incoming_data = api.get('endpoint')
+    >>> # Create or update data in the SuperFaktura API
+    >>> api.post('endpoint', outgoing_data)
 """
 
 import os
@@ -62,7 +59,7 @@ class SuperFakturaAPI:
             f"{_api_company_id}"
         }
 
-    def get(self, endpoint: str, timeout: int = 5) -> Dict:
+    def get(self, endpoint: str, timeout: int = 5) -> bytes:
         """
         Retrieves data from the SuperFaktura API.
 
@@ -74,7 +71,7 @@ class SuperFakturaAPI:
             timeout (int, optional): The timeout for the API request in seconds. Defaults to 5.
 
         Returns:
-            Dict: The retrieved data in JSON format.
+            bytes: The retrieved data in bytes.
 
         Raises:
             SuperFakturaAPIException: If the API request fails or returns an error.
@@ -90,9 +87,9 @@ class SuperFakturaAPI:
         url = f"{self._api_url}/{endpoint}"
         req = requests.get(url=url, headers=self._auth_header, timeout=timeout)
         if req.status_code == 200:
-            return req.json()
+            return req.content
         raise SuperFakturaAPIException(
-            f"Get status code: {req.status_code}; {req.json()}"
+            f"Get status code: {req.status_code}; {req.content!r}"
         )
 
     def post(self, endpoint: str, data: str, timeout: int = 5) -> Dict:
