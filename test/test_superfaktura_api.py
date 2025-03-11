@@ -1,7 +1,9 @@
 import os
 import pytest
+from unittest.mock import patch, mock_open, MagicMock
+
 import requests
-from unittest.mock import patch, mock_open
+
 from superfaktura.superfaktura_api import (
     SuperFakturaAPI,
     SuperFakturaAPIException,
@@ -48,7 +50,7 @@ def test_download(api):
 def test_download_failure(api):
     with patch("requests.get") as mock_get:
         mock_get.return_value.status_code = 404
-        with patch("builtins.open", mock_open()) as mock_file:
+        with patch("builtins.open", mock_open()):
             with open("test_file", "wb") as f:
                 with pytest.raises(SuperFakturaAPIException):
                     api.download("test_endpoint", f)
@@ -66,3 +68,12 @@ def test_post_failure(api):
         mock_post.return_value.json.return_value = {"error": "not found"}
         with pytest.raises(SuperFakturaAPIException):
             api.post("test_endpoint", '{"name": "Example"}')
+
+def test_get_invalid_json(api):
+    with patch("requests.get") as mock_get:
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.json.side_effect = requests.exceptions.JSONDecodeError("msg", "doc", 0)
+        mock_get.return_value = mock_response
+        with pytest.raises(SuperFakturaAPIException, match="Unable to decode response as JSON"):
+            api.get("test_endpoint")
