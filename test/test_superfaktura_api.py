@@ -77,3 +77,13 @@ def test_get_invalid_json(api):
         mock_get.return_value = mock_response
         with pytest.raises(SuperFakturaAPIException, match="Unable to decode response as JSON"):
             api.get("test_endpoint")
+
+def test_download_not_writable_descriptor(api):
+    with patch("requests.get") as mock_get:
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.content = b"test_content"
+        mock_descriptor = MagicMock()
+        mock_descriptor.writable.return_value = False
+        with patch("builtins.open", mock_open()) as mock_file:
+            with pytest.raises(SuperFakturaAPIException, match=" is not writable"):
+                api.download("test_endpoint", mock_descriptor)
