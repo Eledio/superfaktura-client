@@ -8,6 +8,13 @@ from superfaktura.client_contacts import (
     ClientException,
 )
 
+"""
+Tests for the ClientContact class from the superfaktura package.
+
+These tests validate the functionality of methods for managing client contacts 
+through the SuperFaktura API.
+"""
+
 
 @pytest.fixture
 def client_contact():
