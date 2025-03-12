@@ -20,8 +20,7 @@ def client_contact():
             "SUPERFAKTURA_API_COMPANY_ID": "test_company_id",
         },
     ):
-        with patch("superfaktura.client_contacts.ClientContact", return_value=None):
-            return ClientContact()
+        return ClientContact()
 
 
 def test_add_contact_success(client_contact):
