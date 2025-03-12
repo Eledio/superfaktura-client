@@ -1,3 +1,5 @@
+import os
+
 import pytest  # type: ignore
 from unittest.mock import patch
 from superfaktura.client_contacts import (
@@ -9,8 +11,17 @@ from superfaktura.client_contacts import (
 
 @pytest.fixture
 def client_contact():
-    with patch("superfaktura.client_contacts.ClientContact", return_value=None):
-        return ClientContact()
+    with patch.dict(
+        os.environ,
+        {
+            "SUPERFAKTURA_API_KEY": "test_key",
+            "SUPERFAKTURA_API_URL": "https://api.superfaktura.cz",
+            "SUPERFAKTURA_API_EMAIL": "test_email",
+            "SUPERFAKTURA_API_COMPANY_ID": "test_company_id",
+        },
+    ):
+        with patch("superfaktura.client_contacts.ClientContact", return_value=None):
+            return ClientContact()
 
 
 def test_add_contact_success(client_contact):
