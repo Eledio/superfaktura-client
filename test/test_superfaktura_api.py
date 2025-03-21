@@ -1,5 +1,5 @@
 import os
-import pytest   # type: ignore
+import pytest
 from unittest.mock import patch, mock_open, MagicMock
 
 import requests
