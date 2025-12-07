@@ -32,7 +32,7 @@ class ClientException(Exception):
 
 
 @dataclasses.dataclass
-class ClientContactModel:
+class ClientContactModel:  # pylint: disable=too-many-instance-attributes
     """Client contact model."""
 
     name: str
@@ -88,9 +88,6 @@ class ClientContactModel:
 
 class ClientContact(SuperFakturaAPI):
     """Client contact class."""
-
-    def __init__(self):
-        super().__init__()
 
     def add_contact(self, contact: ClientContactModel) -> bool:
         """Adds a new client contact."""

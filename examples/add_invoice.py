@@ -72,12 +72,12 @@ def main():
             update=True,
             country_id=225,
         ),
-        invoice_settings=InvoiceSettings(language=Language.English),
+        invoice_settings=InvoiceSettings(language=Language.ENGLISH),
     )
 
     try:
         with open("invoice.pdf", "wb") as f:
-            invoice.get_pdf(invoice=resp, descriptor=f, language=Language.English)
+            invoice.get_pdf(invoice=resp, descriptor=f, language=Language.ENGLISH)
         print("Invoice saved to 'invoice.pdf'")
     except Exception as e:
         print(f"Error generating or saving invoice as PDF: {e}")

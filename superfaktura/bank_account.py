@@ -38,7 +38,7 @@ class NoDefaultBankAccountException(Exception):
 
 
 @dataclass
-class BankAccountModel:
+class BankAccountModel:  # pylint: disable=too-many-instance-attributes
     """Dataclass representing a bank account."""
 
     account: Optional[str]
@@ -85,9 +85,6 @@ class BankAccount(SuperFakturaAPI):
         >>> data = {"account": "1234567890", "bank_code": "1234567890", "default": True}
         >>> bank.post(data)
     """
-
-    def __init__(self):
-        super().__init__()
 
     def list(self) -> dict:
         """Retrieves a list of bank accounts."""

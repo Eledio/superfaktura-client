@@ -11,8 +11,10 @@ Usage:
     currency = Currencies.CZK
 """
 
+from enum import Enum
 
-class Currencies:
+
+class Currencies(str, Enum):
     """
     Currency Enumeration.
 

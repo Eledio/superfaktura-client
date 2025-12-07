@@ -49,6 +49,7 @@ Usage:
     )
 """
 
+from enum import Enum
 from dataclasses import dataclass, asdict
 from typing import Optional, List, IO
 import json
@@ -59,8 +60,22 @@ from superfaktura.superfaktura_api import SuperFakturaAPI
 from superfaktura.utils.data_types import Date, DateEncoder
 
 
+class InvoiceType(str, Enum):
+    """
+    Invoice Type Enumeration.
+
+    This enumeration represents the different types of invoices that can be created.
+
+    Usage:
+        invoice_type = InvoiceType.PROFORMA
+    """
+
+    PROFORMA = "proforma"
+    INVOICE = "regular"
+
+
 @dataclass
-class InvoiceModel:
+class InvoiceModel:  # pylint: disable=too-many-instance-attributes
     """This dataclass represents an invoice in the SuperFaktura API."""
 
     add_rounding_item: Optional[int] = 0
@@ -98,13 +113,16 @@ class InvoiceModel:
     sequence_id: Optional[int] = None
     specific: Optional[str] = None
     tax_document: Optional[int] = None
-    type: Optional[str] = None
+    type: Optional[InvoiceType | str] = None
     variable: Optional[str] = None
     vat_transfer: Optional[int] = None
 
     def as_dict(self) -> dict:
         """Returns a dictionary representation of the InvoiceModel."""
         data = asdict(self)
+        # Convert InvoiceType enum to its string value if used
+        if isinstance(data.get("type"), InvoiceType):
+            data["type"] = data["type"].value
         for key in list(data.keys()):
             if data[key] is None:
                 del data[key]
@@ -118,7 +136,7 @@ class InvoiceModel:
 
 
 @dataclass
-class InvoiceItem:
+class InvoiceItem:  # pylint: disable=too-many-instance-attributes
     """This dataclass represents an invoice item in the SuperFaktura API."""
 
     name: str
@@ -162,12 +180,12 @@ class InvoiceRespModel:
 
 
 @dataclass
-class InvoiceSettings:
+class InvoiceSettings:  # pylint: disable=too-many-instance-attributes
     """
     This dataclass represents the settings for an invoice in the SuperFaktura API.
     """
 
-    language: Optional[str] = None
+    language: Optional[Language | str] = None
     bysquare: Optional[bool] = None
     callback_payment: Optional[str] = None
     online_payment: Optional[bool] = None
@@ -180,24 +198,13 @@ class InvoiceSettings:
     def as_dict(self) -> dict:
         """Returns a dictionary representation of the InvoiceSettings."""
         data = asdict(self)
+        # Normalize Enum-like fields to their underlying values for JSON
+        if isinstance(data.get("language"), Language):
+            data["language"] = data["language"].value
         for key in list(data.keys()):
             if data[key] is None:
                 del data[key]
         return data
-
-
-class InvoiceType:
-    """
-    Invoice Type Enumeration.
-
-    This enumeration represents the different types of invoices that can be created.
-
-    Usage:
-        invoice_type = InvoiceType.PROFORMA
-    """
-
-    PROFORMA = "proforma"
-    INVOICE = "regular"
 
 
 class Invoice(SuperFakturaAPI):
@@ -244,9 +251,6 @@ class Invoice(SuperFakturaAPI):
         )
     """
 
-    def __init__(self):
-        super().__init__()
-
     def add(
         self,
         invoice_model: InvoiceModel,
@@ -287,7 +291,7 @@ class Invoice(SuperFakturaAPI):
         self,
         invoice: InvoiceRespModel,
         descriptor: IO[bytes],
-        language: str = Language.Czech,
+        language: Language | str = Language.CZECH,
     ) -> None:
         """
         Retrieves the PDF of the invoice.
@@ -295,10 +299,11 @@ class Invoice(SuperFakturaAPI):
         Args:
             invoice (InvoiceRespModel): The response model for the invoice.
             descriptor (IO[bytes]): The descriptor to write the PDF data to.
-            language (str): The language for the PDF.
+            language (Language): The language for the PDF.
 
         Returns:
             None
         """
-        url = f"{language}/invoices/pdf/{invoice.invoice_id}/token:{invoice.invoice_token}"
+        lang_code = language.value if isinstance(language, Language) else str(language)
+        url = f"{lang_code}/invoices/pdf/{invoice.invoice_id}/token:{invoice.invoice_token}"
         self.download(url, descriptor)
