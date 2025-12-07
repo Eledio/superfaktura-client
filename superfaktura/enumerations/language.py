@@ -53,3 +53,7 @@ class Language(str, Enum):
     SLOVENE = "slv"
     SPANISH = "spa"
     UKRAINIAN = "ukr"
+
+    def __str__(self) -> str:
+        """Return the string value of the language."""
+        return self.value

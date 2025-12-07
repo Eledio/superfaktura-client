@@ -168,7 +168,7 @@ class InvoiceSettings:  # pylint: disable=too-many-instance-attributes
     This dataclass represents the settings for an invoice in the SuperFaktura API.
     """
 
-    language: Optional[str] = None
+    language: Optional[Language] = None
     bysquare: Optional[bool] = None
     callback_payment: Optional[str] = None
     online_payment: Optional[bool] = None
@@ -285,7 +285,7 @@ class Invoice(SuperFakturaAPI):
         self,
         invoice: InvoiceRespModel,
         descriptor: IO[bytes],
-        language: str = Language.CZECH,
+        language: Language = Language.CZECH,
     ) -> None:
         """
         Retrieves the PDF of the invoice.
@@ -293,10 +293,10 @@ class Invoice(SuperFakturaAPI):
         Args:
             invoice (InvoiceRespModel): The response model for the invoice.
             descriptor (IO[bytes]): The descriptor to write the PDF data to.
-            language (str): The language for the PDF.
+            language (Language): The language for the PDF.
 
         Returns:
             None
         """
-        url = f"{language}/invoices/pdf/{invoice.invoice_id}/token:{invoice.invoice_token}"
+        url = f"{language.value}/invoices/pdf/{invoice.invoice_id}/token:{invoice.invoice_token}"
         self.download(url, descriptor)
