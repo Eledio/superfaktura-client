@@ -86,9 +86,6 @@ class BankAccount(SuperFakturaAPI):
         >>> bank.post(data)
     """
 
-    def __init__(self):
-        super().__init__()
-
     def list(self) -> dict:
         """Retrieves a list of bank accounts."""
         url = "bank_accounts/index"

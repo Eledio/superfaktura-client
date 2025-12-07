@@ -89,9 +89,6 @@ class ClientContactModel:  # pylint: disable=too-many-instance-attributes
 class ClientContact(SuperFakturaAPI):
     """Client contact class."""
 
-    def __init__(self):
-        super().__init__()
-
     def add_contact(self, contact: ClientContactModel) -> bool:
         """Adds a new client contact."""
         url = "clients/create"
