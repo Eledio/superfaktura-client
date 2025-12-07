@@ -60,6 +60,20 @@ from superfaktura.superfaktura_api import SuperFakturaAPI
 from superfaktura.utils.data_types import Date, DateEncoder
 
 
+class InvoiceType(str, Enum):
+    """
+    Invoice Type Enumeration.
+
+    This enumeration represents the different types of invoices that can be created.
+
+    Usage:
+        invoice_type = InvoiceType.PROFORMA
+    """
+
+    PROFORMA = "proforma"
+    INVOICE = "regular"
+
+
 @dataclass
 class InvoiceModel:  # pylint: disable=too-many-instance-attributes
     """This dataclass represents an invoice in the SuperFaktura API."""
@@ -99,7 +113,7 @@ class InvoiceModel:  # pylint: disable=too-many-instance-attributes
     sequence_id: Optional[int] = None
     specific: Optional[str] = None
     tax_document: Optional[int] = None
-    type: Optional[str] = None
+    type: Optional[InvoiceType | str] = None
     variable: Optional[str] = None
     vat_transfer: Optional[int] = None
 
@@ -171,7 +185,7 @@ class InvoiceSettings:  # pylint: disable=too-many-instance-attributes
     This dataclass represents the settings for an invoice in the SuperFaktura API.
     """
 
-    language: Optional[Language] = None
+    language: Optional[Language | str] = None
     bysquare: Optional[bool] = None
     callback_payment: Optional[str] = None
     online_payment: Optional[bool] = None
@@ -191,20 +205,6 @@ class InvoiceSettings:  # pylint: disable=too-many-instance-attributes
             if data[key] is None:
                 del data[key]
         return data
-
-
-class InvoiceType(str, Enum):
-    """
-    Invoice Type Enumeration.
-
-    This enumeration represents the different types of invoices that can be created.
-
-    Usage:
-        invoice_type = InvoiceType.PROFORMA
-    """
-
-    PROFORMA = "proforma"
-    INVOICE = "regular"
 
 
 class Invoice(SuperFakturaAPI):
@@ -291,7 +291,7 @@ class Invoice(SuperFakturaAPI):
         self,
         invoice: InvoiceRespModel,
         descriptor: IO[bytes],
-        language: Language = Language.CZECH,
+        language: Language | str = Language.CZECH,
     ) -> None:
         """
         Retrieves the PDF of the invoice.
