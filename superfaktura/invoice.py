@@ -106,6 +106,9 @@ class InvoiceModel:  # pylint: disable=too-many-instance-attributes
     def as_dict(self) -> dict:
         """Returns a dictionary representation of the InvoiceModel."""
         data = asdict(self)
+        # Convert InvoiceType enum to its string value if used
+        if isinstance(data.get("type"), InvoiceType):
+            data["type"] = data["type"].value
         for key in list(data.keys()):
             if data[key] is None:
                 del data[key]
@@ -181,6 +184,9 @@ class InvoiceSettings:  # pylint: disable=too-many-instance-attributes
     def as_dict(self) -> dict:
         """Returns a dictionary representation of the InvoiceSettings."""
         data = asdict(self)
+        # Normalize Enum-like fields to their underlying values for JSON
+        if isinstance(data.get("language"), Language):
+            data["language"] = data["language"].value
         for key in list(data.keys()):
             if data[key] is None:
                 del data[key]
@@ -298,5 +304,6 @@ class Invoice(SuperFakturaAPI):
         Returns:
             None
         """
-        url = f"{language.value}/invoices/pdf/{invoice.invoice_id}/token:{invoice.invoice_token}"
+        lang_code = language.value if isinstance(language, Language) else str(language)
+        url = f"{lang_code}/invoices/pdf/{invoice.invoice_id}/token:{invoice.invoice_token}"
         self.download(url, descriptor)
