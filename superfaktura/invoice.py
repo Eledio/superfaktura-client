@@ -60,7 +60,7 @@ from superfaktura.utils.data_types import Date, DateEncoder
 
 
 @dataclass
-class InvoiceModel:
+class InvoiceModel:  # pylint: disable=too-many-instance-attributes
     """This dataclass represents an invoice in the SuperFaktura API."""
 
     add_rounding_item: Optional[int] = 0

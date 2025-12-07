@@ -12,7 +12,7 @@ Usage:
 """
 
 
-class Currencies:
+class Currencies:  # pylint: disable=too-many-instance-attributes
     """
     Currency Enumeration.
 
