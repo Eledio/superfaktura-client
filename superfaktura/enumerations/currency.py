@@ -11,8 +11,10 @@ Usage:
     currency = Currencies.CZK
 """
 
+from enum import Enum
 
-class Currencies:  # pylint: disable=too-many-instance-attributes
+
+class Currencies(str, Enum):
     """
     Currency Enumeration.
 
