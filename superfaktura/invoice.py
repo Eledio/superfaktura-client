@@ -49,6 +49,7 @@ Usage:
     )
 """
 
+from enum import Enum
 from dataclasses import dataclass, asdict
 from typing import Optional, List, IO
 import json
@@ -186,7 +187,7 @@ class InvoiceSettings:  # pylint: disable=too-many-instance-attributes
         return data
 
 
-class InvoiceType:  # pylint: disable=too-many-instance-attributes
+class InvoiceType(str, Enum):
     """
     Invoice Type Enumeration.
 
