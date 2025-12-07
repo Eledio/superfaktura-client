@@ -32,7 +32,7 @@ class ClientException(Exception):
 
 
 @dataclasses.dataclass
-class ClientContactModel:
+class ClientContactModel:  # pylint: disable=too-many-instance-attributes
     """Client contact model."""
 
     name: str

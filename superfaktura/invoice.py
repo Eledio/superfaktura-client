@@ -118,7 +118,7 @@ class InvoiceModel:
 
 
 @dataclass
-class InvoiceItem:
+class InvoiceItem:  # pylint: disable=too-many-instance-attributes
     """This dataclass represents an invoice item in the SuperFaktura API."""
 
     name: str
@@ -162,7 +162,7 @@ class InvoiceRespModel:
 
 
 @dataclass
-class InvoiceSettings:
+class InvoiceSettings:  # pylint: disable=too-many-instance-attributes
     """
     This dataclass represents the settings for an invoice in the SuperFaktura API.
     """
@@ -186,7 +186,7 @@ class InvoiceSettings:
         return data
 
 
-class InvoiceType:
+class InvoiceType:  # pylint: disable=too-many-instance-attributes
     """
     Invoice Type Enumeration.
 
@@ -287,7 +287,7 @@ class Invoice(SuperFakturaAPI):
         self,
         invoice: InvoiceRespModel,
         descriptor: IO[bytes],
-        language: str = Language.Czech,
+        language: str = Language.CZECH,
     ) -> None:
         """
         Retrieves the PDF of the invoice.

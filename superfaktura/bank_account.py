@@ -38,7 +38,7 @@ class NoDefaultBankAccountException(Exception):
 
 
 @dataclass
-class BankAccountModel:
+class BankAccountModel:  # pylint: disable=too-many-instance-attributes
     """Dataclass representing a bank account."""
 
     account: Optional[str]
