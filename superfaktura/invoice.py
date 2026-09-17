@@ -171,12 +171,20 @@ class InvoiceRespModel:
         - error_message (str): The error message.
         - invoice_id (Optional[int]): The ID of the invoice.
         - invoice_token (Optional[str]): The token of the invoice.
+        - invoice_no (Optional[str]): The invoice number.
+        - invoice_no_formatted (Optional[str]): The formatted invoice number.
+        - sequence_id (Optional[str]): The numbering sequence ID used for the invoice.
+        - variable (Optional[str]): The variable symbol of the invoice.
     """
 
     error: int
     error_message: str
     invoice_id: Optional[int] = None
     invoice_token: Optional[str] = None
+    invoice_no: Optional[str] = None
+    invoice_no_formatted: Optional[str] = None
+    sequence_id: Optional[str] = None
+    variable: Optional[str] = None
 
 
 @dataclass
@@ -283,8 +291,13 @@ class Invoice(SuperFakturaAPI):
         )
         if "data" in resp:
             if "Invoice" in resp["data"]:
-                invoice_resp.invoice_id = int(resp["data"]["Invoice"]["id"])
-                invoice_resp.invoice_token = resp["data"]["Invoice"]["token"]
+                invoice_data = resp["data"]["Invoice"]
+                invoice_resp.invoice_id = int(invoice_data["id"])
+                invoice_resp.invoice_token = invoice_data["token"]
+                invoice_resp.invoice_no = invoice_data.get("invoice_no")
+                invoice_resp.invoice_no_formatted = invoice_data.get("invoice_no_formatted")
+                invoice_resp.sequence_id = invoice_data.get("sequence_id")
+                invoice_resp.variable = invoice_data.get("variable")
         return invoice_resp
 
     def get_pdf(

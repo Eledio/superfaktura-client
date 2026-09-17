@@ -28,7 +28,7 @@ Usage:
 """
 
 from dataclasses import dataclass, asdict
-from typing import Optional
+from typing import List, Optional
 
 from superfaktura.superfaktura_api import SuperFakturaAPI
 
@@ -49,6 +49,7 @@ class BankAccountModel:  # pylint: disable=too-many-instance-attributes
     show: Optional[int]
     swift: Optional[str]
     id: Optional[int]
+    currency: Optional[str] = None
 
     def as_dict(self) -> dict:
         """Returns a dictionary representation of the BankAccountModel."""
@@ -94,6 +95,31 @@ class BankAccount(SuperFakturaAPI):
     def default(self) -> Optional[BankAccountModel]:
         """Retrieves the default bank account."""
         accounts = self.list()["BankAccounts"]
+        return self._find_default(accounts)
+
+    def for_currency(self, currency: str) -> Optional[BankAccountModel]:
+        """
+        Retrieves the bank account associated with the given currency, falling back to the
+        default account if there is no match. Only fetches the account list once.
+
+        Args:
+            currency (str): The currency to look up (e.g. "EUR", "CZK").
+
+        Returns:
+            Optional[BankAccountModel]: The matching (or default) bank account.
+
+        Raises:
+            NoDefaultBankAccountException: If there is no account for that currency and no
+                                            default account either.
+        """
+        accounts = self.list()["BankAccounts"]
+        for account in accounts:
+            if account["BankAccount"].get("currency") == currency:
+                return BankAccountModel.from_dict(account["BankAccount"])
+        return self._find_default(accounts)
+
+    @staticmethod
+    def _find_default(accounts: List[dict]) -> BankAccountModel:
         for account in accounts:
             if account["BankAccount"]["default"]:
                 return BankAccountModel.from_dict(account["BankAccount"])
