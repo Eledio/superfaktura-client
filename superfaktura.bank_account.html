@@ -147,20 +147,21 @@ It allows for retrieving, creating, updating, and deleting bank accounts.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="superfaktura.bank_account.BankAccount.for_currency">
 <span class="sig-name descname"><span class="pre">for_currency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">currency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#superfaktura.bank_account.BankAccountModel" title="superfaktura.bank_account.BankAccountModel"><span class="pre">BankAccountModel</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#superfaktura.bank_account.BankAccount.for_currency" title="Link to this definition"></a></dt>
-<dd><p>Retrieves the bank account associated with the given currency, if any.</p>
+<dd><p>Retrieves the bank account associated with the given currency, falling back to the
+default account if there is no match. Only fetches the account list once.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>currency</strong> (<em>str</em>) – The currency to look up (e.g. “EUR”, “CZK”).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>The matching bank account, or None if no bank account is</dt><dd><p>associated with that currency.</p>
-</dd>
-</dl>
-</p>
+<dd class="field-even"><p>The matching (or default) bank account.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Optional[<a class="reference internal" href="#superfaktura.bank_account.BankAccountModel" title="superfaktura.bank_account.BankAccountModel">BankAccountModel</a>]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#superfaktura.bank_account.NoDefaultBankAccountException" title="superfaktura.bank_account.NoDefaultBankAccountException"><strong>NoDefaultBankAccountException</strong></a> – If there is no account for that currency and no
+    default account either.</p>
 </dd>
 </dl>
 </dd></dl>
