@@ -49,6 +49,7 @@ class BankAccountModel:  # pylint: disable=too-many-instance-attributes
     show: Optional[int]
     swift: Optional[str]
     id: Optional[int]
+    currency: Optional[str] = None
 
     def as_dict(self) -> dict:
         """Returns a dictionary representation of the BankAccountModel."""
@@ -98,6 +99,23 @@ class BankAccount(SuperFakturaAPI):
             if account["BankAccount"]["default"]:
                 return BankAccountModel.from_dict(account["BankAccount"])
         raise NoDefaultBankAccountException("No default bank account found")
+
+    def for_currency(self, currency: str) -> Optional[BankAccountModel]:
+        """
+        Retrieves the bank account associated with the given currency, if any.
+
+        Args:
+            currency (str): The currency to look up (e.g. "EUR", "CZK").
+
+        Returns:
+            Optional[BankAccountModel]: The matching bank account, or None if no bank account is
+                                         associated with that currency.
+        """
+        accounts = self.list()["BankAccounts"]
+        for account in accounts:
+            if account["BankAccount"].get("currency") == currency:
+                return BankAccountModel.from_dict(account["BankAccount"])
+        return None
 
 
 if __name__ == "__main__":
