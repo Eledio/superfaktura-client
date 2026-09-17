@@ -28,7 +28,7 @@ Usage:
 """
 
 from dataclasses import dataclass, asdict
-from typing import Optional
+from typing import List, Optional
 
 from superfaktura.superfaktura_api import SuperFakturaAPI
 
@@ -119,7 +119,7 @@ class BankAccount(SuperFakturaAPI):
         return self._find_default(accounts)
 
     @staticmethod
-    def _find_default(accounts: list) -> BankAccountModel:
+    def _find_default(accounts: List[dict]) -> BankAccountModel:
         for account in accounts:
             if account["BankAccount"]["default"]:
                 return BankAccountModel.from_dict(account["BankAccount"])
