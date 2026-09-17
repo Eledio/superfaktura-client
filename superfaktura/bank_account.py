@@ -95,27 +95,35 @@ class BankAccount(SuperFakturaAPI):
     def default(self) -> Optional[BankAccountModel]:
         """Retrieves the default bank account."""
         accounts = self.list()["BankAccounts"]
-        for account in accounts:
-            if account["BankAccount"]["default"]:
-                return BankAccountModel.from_dict(account["BankAccount"])
-        raise NoDefaultBankAccountException("No default bank account found")
+        return self._find_default(accounts)
 
     def for_currency(self, currency: str) -> Optional[BankAccountModel]:
         """
-        Retrieves the bank account associated with the given currency, if any.
+        Retrieves the bank account associated with the given currency, falling back to the
+        default account if there is no match. Only fetches the account list once.
 
         Args:
             currency (str): The currency to look up (e.g. "EUR", "CZK").
 
         Returns:
-            Optional[BankAccountModel]: The matching bank account, or None if no bank account is
-                                         associated with that currency.
+            Optional[BankAccountModel]: The matching (or default) bank account.
+
+        Raises:
+            NoDefaultBankAccountException: If there is no account for that currency and no
+                                            default account either.
         """
         accounts = self.list()["BankAccounts"]
         for account in accounts:
             if account["BankAccount"].get("currency") == currency:
                 return BankAccountModel.from_dict(account["BankAccount"])
-        return None
+        return self._find_default(accounts)
+
+    @staticmethod
+    def _find_default(accounts: list) -> BankAccountModel:
+        for account in accounts:
+            if account["BankAccount"]["default"]:
+                return BankAccountModel.from_dict(account["BankAccount"])
+        raise NoDefaultBankAccountException("No default bank account found")
 
 
 if __name__ == "__main__":
