@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SuperFaktura API client &mdash; SuperFaktura API client  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -47,6 +47,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-superfaktura.bank_account">Bank account</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#superfaktura.bank_account.BankAccount"><code class="docutils literal notranslate"><span class="pre">BankAccount</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#superfaktura.bank_account.BankAccount.default"><code class="docutils literal notranslate"><span class="pre">BankAccount.default()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#superfaktura.bank_account.BankAccount.for_currency"><code class="docutils literal notranslate"><span class="pre">BankAccount.for_currency()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#superfaktura.bank_account.BankAccount.list"><code class="docutils literal notranslate"><span class="pre">BankAccount.list()</span></code></a></li>
 </ul>
 </li>
@@ -55,6 +56,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#superfaktura.bank_account.BankAccountModel.as_dict"><code class="docutils literal notranslate"><span class="pre">BankAccountModel.as_dict()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#superfaktura.bank_account.BankAccountModel.bank_code"><code class="docutils literal notranslate"><span class="pre">BankAccountModel.bank_code</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#superfaktura.bank_account.BankAccountModel.bank_name"><code class="docutils literal notranslate"><span class="pre">BankAccountModel.bank_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#superfaktura.bank_account.BankAccountModel.currency"><code class="docutils literal notranslate"><span class="pre">BankAccountModel.currency</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#superfaktura.bank_account.BankAccountModel.default"><code class="docutils literal notranslate"><span class="pre">BankAccountModel.default</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#superfaktura.bank_account.BankAccountModel.from_dict"><code class="docutils literal notranslate"><span class="pre">BankAccountModel.from_dict()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#superfaktura.bank_account.BankAccountModel.iban"><code class="docutils literal notranslate"><span class="pre">BankAccountModel.iban</span></code></a></li>
@@ -183,7 +185,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#superfaktura.invoice.InvoiceRespModel.error"><code class="docutils literal notranslate"><span class="pre">InvoiceRespModel.error</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#superfaktura.invoice.InvoiceRespModel.error_message"><code class="docutils literal notranslate"><span class="pre">InvoiceRespModel.error_message</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#superfaktura.invoice.InvoiceRespModel.invoice_id"><code class="docutils literal notranslate"><span class="pre">InvoiceRespModel.invoice_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#superfaktura.invoice.InvoiceRespModel.invoice_no"><code class="docutils literal notranslate"><span class="pre">InvoiceRespModel.invoice_no</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#superfaktura.invoice.InvoiceRespModel.invoice_no_formatted"><code class="docutils literal notranslate"><span class="pre">InvoiceRespModel.invoice_no_formatted</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#superfaktura.invoice.InvoiceRespModel.invoice_token"><code class="docutils literal notranslate"><span class="pre">InvoiceRespModel.invoice_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#superfaktura.invoice.InvoiceRespModel.sequence_id"><code class="docutils literal notranslate"><span class="pre">InvoiceRespModel.sequence_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#superfaktura.invoice.InvoiceRespModel.variable"><code class="docutils literal notranslate"><span class="pre">InvoiceRespModel.variable</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#superfaktura.invoice.InvoiceSettings"><code class="docutils literal notranslate"><span class="pre">InvoiceSettings</span></code></a><ul>
@@ -276,7 +282,7 @@ It allows for retrieving, creating, updating, and deleting bank accounts.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the default bank account</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">default_account</span> <span class="o">=</span> <span class="n">bank</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create or update a bank account</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;account&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span> <span class="s2">&quot;bank_code&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"account"</span><span class="p">:</span> <span class="s2">"1234567890"</span><span class="p">,</span> <span class="s2">"bank_code"</span><span class="p">:</span> <span class="s2">"1234567890"</span><span class="p">,</span> <span class="s2">"default"</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bank</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -311,7 +317,7 @@ It allows for retrieving, creating, updating, and deleting bank accounts.</p>
 <dt>Usage:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bank</span> <span class="o">=</span> <span class="n">BankAccount</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">accounts</span> <span class="o">=</span> <span class="n">bank</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">default_account</span> <span class="o">=</span> <span class="n">bank</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;account&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span> <span class="s2">&quot;bank_code&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"account"</span><span class="p">:</span> <span class="s2">"1234567890"</span><span class="p">,</span> <span class="s2">"bank_code"</span><span class="p">:</span> <span class="s2">"1234567890"</span><span class="p">,</span> <span class="s2">"default"</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bank</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -324,6 +330,27 @@ It allows for retrieving, creating, updating, and deleting bank accounts.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="superfaktura.bank_account.BankAccount.for_currency">
+<span class="sig-name descname"><span class="pre">for_currency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">currency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="superfaktura.bank_account.html#superfaktura.bank_account.BankAccountModel" title="superfaktura.bank_account.BankAccountModel"><span class="pre">BankAccountModel</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#superfaktura.bank_account.BankAccount.for_currency" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the bank account associated with the given currency, if any.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>currency</strong> (<em>str</em>) – The currency to look up (e.g. “EUR”, “CZK”).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>The matching bank account, or None if no bank account is</dt><dd><p>associated with that currency.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference internal" href="superfaktura.bank_account.html#superfaktura.bank_account.BankAccountModel" title="superfaktura.bank_account.BankAccountModel">BankAccountModel</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="superfaktura.bank_account.BankAccount.list">
 <span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#superfaktura.bank_account.BankAccount.list" title="Link to this definition"></a></dt>
 <dd><p>Retrieves a list of bank accounts.</p>
@@ -333,7 +360,7 @@ It allows for retrieving, creating, updating, and deleting bank accounts.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="superfaktura.bank_account.BankAccountModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">superfaktura.bank_account.</span></span><span class="sig-name descname"><span class="pre">BankAccountModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bank_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bank_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iban</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">swift</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#superfaktura.bank_account.BankAccountModel" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">superfaktura.bank_account.</span></span><span class="sig-name descname"><span class="pre">BankAccountModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bank_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bank_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iban</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">swift</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#superfaktura.bank_account.BankAccountModel" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Dataclass representing a bank account.</p>
 <dl class="py attribute">
@@ -355,6 +382,11 @@ It allows for retrieving, creating, updating, and deleting bank accounts.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="superfaktura.bank_account.BankAccountModel.bank_name">
 <span class="sig-name descname"><span class="pre">bank_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#superfaktura.bank_account.BankAccountModel.bank_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="superfaktura.bank_account.BankAccountModel.currency">
+<span class="sig-name descname"><span class="pre">currency</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#superfaktura.bank_account.BankAccountModel.currency" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -659,26 +691,26 @@ It allows for retrieving, creating, updating, and deleting invoices.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
 <span class="go">    invoice_model=InvoiceModel(</span>
 <span class="go">        type=InvoiceType.INVOICE,</span>
-<span class="go">        name=&quot;My First Invoice&quot;,</span>
-<span class="go">        due=Date(&quot;2025-04-01&quot;),</span>
+<span class="go">        name="My First Invoice",</span>
+<span class="go">        due=Date("2025-04-01"),</span>
 <span class="go">        invoice_currency=Currencies.EUR,</span>
-<span class="go">        header_comment=&quot;We invoice you for services&quot;,</span>
+<span class="go">        header_comment="We invoice you for services",</span>
 <span class="go">        bank_accounts=[bank.default().as_dict()],</span>
 <span class="go">    ),</span>
 <span class="go">    items=[</span>
 <span class="go">        InvoiceItem(</span>
-<span class="go">            name=&quot;Website Development&quot;, unit_price=1000.0, quantity=1, tax=20</span>
+<span class="go">            name="Website Development", unit_price=1000.0, quantity=1, tax=20</span>
 <span class="go">        ),</span>
 <span class="go">        InvoiceItem(</span>
-<span class="go">            name=&quot;Hosting Service (1 year)&quot;, unit_price=500.0, quantity=1, tax=20</span>
+<span class="go">            name="Hosting Service (1 year)", unit_price=500.0, quantity=1, tax=20</span>
 <span class="go">        ),</span>
 <span class="go">    ],</span>
 <span class="go">    contact=ClientContactModel(</span>
-<span class="go">        name=&quot;John Doe&quot;,</span>
-<span class="go">        email=&quot;john.doe@examle.com&quot;,</span>
-<span class="go">        phone=&quot;+1 555-1234&quot;,</span>
-<span class="go">        address=&quot;123 Main Street, New York&quot;,</span>
-<span class="go">        ico=&quot;987654321&quot;,</span>
+<span class="go">        name="John Doe",</span>
+<span class="go">        email="john.doe@examle.com",</span>
+<span class="go">        phone="+1 555-1234",</span>
+<span class="go">        address="123 Main Street, New York",</span>
+<span class="go">        ico="987654321",</span>
 <span class="go">        update=True,</span>
 <span class="go">        country_id=225,</span>
 <span class="go">    ),</span>
@@ -723,26 +755,26 @@ It allows for retrieving, creating, updating, and deleting invoices.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
 <span class="go">    invoice_model=InvoiceModel(</span>
 <span class="go">        type=InvoiceType.INVOICE,</span>
-<span class="go">        name=&quot;My First Invoice&quot;,</span>
-<span class="go">        due=Date(&quot;2025-04-01&quot;),</span>
+<span class="go">        name="My First Invoice",</span>
+<span class="go">        due=Date("2025-04-01"),</span>
 <span class="go">        invoice_currency=Currencies.EUR,</span>
-<span class="go">        header_comment=&quot;We invoice you for services&quot;,</span>
+<span class="go">        header_comment="We invoice you for services",</span>
 <span class="go">        bank_accounts=[bank.default().as_dict()],</span>
 <span class="go">    ),</span>
 <span class="go">    items=[</span>
 <span class="go">        InvoiceItem(</span>
-<span class="go">            name=&quot;Website Development&quot;, unit_price=1000.0, quantity=1, tax=20</span>
+<span class="go">            name="Website Development", unit_price=1000.0, quantity=1, tax=20</span>
 <span class="go">        ),</span>
 <span class="go">        InvoiceItem(</span>
-<span class="go">            name=&quot;Hosting Service (1 year)&quot;, unit_price=500.0, quantity=1, tax=20</span>
+<span class="go">            name="Hosting Service (1 year)", unit_price=500.0, quantity=1, tax=20</span>
 <span class="go">        ),</span>
 <span class="go">    ],</span>
 <span class="go">    contact=ClientContactModel(</span>
-<span class="go">        name=&quot;John Doe&quot;,</span>
-<span class="go">        email=&quot;john.doe@example.com&quot;,</span>
-<span class="go">        phone=&quot;+1 555-1234&quot;,</span>
-<span class="go">        address=&quot;123 Main Street, New York&quot;,</span>
-<span class="go">        ico=&quot;987654321&quot;,</span>
+<span class="go">        name="John Doe",</span>
+<span class="go">        email="john.doe@example.com",</span>
+<span class="go">        phone="+1 555-1234",</span>
+<span class="go">        address="123 Main Street, New York",</span>
+<span class="go">        ico="987654321",</span>
 <span class="go">        update=True,</span>
 <span class="go">        country_id=225,</span>
 <span class="go">    ),</span>
@@ -1077,7 +1109,7 @@ It allows for retrieving, creating, updating, and deleting invoices.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">superfaktura.invoice.</span></span><span class="sig-name descname"><span class="pre">InvoiceRespModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invoice_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invoice_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">superfaktura.invoice.</span></span><span class="sig-name descname"><span class="pre">InvoiceRespModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invoice_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invoice_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invoice_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invoice_no_formatted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This dataclass represents the response model for an invoice in the SuperFaktura API.</p>
 <dl class="py attribute">
@@ -1125,6 +1157,50 @@ It allows for retrieving, creating, updating, and deleting invoices.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">invoice_no</span></span></dt>
+<dd><p>The invoice number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">invoice_no_formatted</span></span></dt>
+<dd><p>The formatted invoice number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">sequence_id</span></span></dt>
+<dd><p>The numbering sequence ID used for the invoice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">variable</span></span></dt>
+<dd><p>The variable symbol of the invoice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel.error">
 <span class="sig-name descname"><span class="pre">error</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel.error" title="Link to this definition"></a></dt>
 <dd></dd></dl>
@@ -1140,8 +1216,28 @@ It allows for retrieving, creating, updating, and deleting invoices.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel.invoice_no">
+<span class="sig-name descname"><span class="pre">invoice_no</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel.invoice_no" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel.invoice_no_formatted">
+<span class="sig-name descname"><span class="pre">invoice_no_formatted</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel.invoice_no_formatted" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel.invoice_token">
 <span class="sig-name descname"><span class="pre">invoice_token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel.invoice_token" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel.sequence_id">
+<span class="sig-name descname"><span class="pre">sequence_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel.sequence_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel.variable">
+<span class="sig-name descname"><span class="pre">variable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel.variable" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1248,9 +1344,9 @@ It allows for reading, creating, updating, and deleting data in SuperFaktura.</p
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create an instance of SuperFakturaAPI</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">superfaktura</span><span class="o">.</span><span class="n">superfaktura_api</span><span class="o">.</span><span class="n">SuperFakturaAPI</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Retrieve data from the SuperFaktura API</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">incoming_data</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;endpoint&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">incoming_data</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'endpoint'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create or update data in the SuperFaktura API</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;endpoint&#39;</span><span class="p">,</span> <span class="n">outgoing_data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'endpoint'</span><span class="p">,</span> <span class="n">outgoing_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
@@ -1283,8 +1379,8 @@ etc.).</p></li>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">SuperFakturaAPI</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.pdf&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">api</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;some/endpoint&quot;</span><span class="p">,</span> <span class="n">descriptor</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"data.pdf"</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">api</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">"some/endpoint"</span><span class="p">,</span> <span class="n">descriptor</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric">Notes</p>
@@ -1316,7 +1412,7 @@ etc.).</p></li>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">SuperFakturaAPI</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;invoices&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'invoices'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1351,8 +1447,8 @@ to 5.</p></li>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">SuperFakturaAPI</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;{&quot;name&quot;: &quot;Example Invoice&quot;, &quot;amount&quot;: 100.0}&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;invoices&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s1">'{"name": "Example Invoice", "amount": 100.0}'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'invoices'</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </pre></div>
 </div>

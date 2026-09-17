@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>superfaktura.superfaktura_api module &mdash; SuperFaktura API client  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -91,9 +91,9 @@ It allows for reading, creating, updating, and deleting data in SuperFaktura.</p
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create an instance of SuperFakturaAPI</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">superfaktura</span><span class="o">.</span><span class="n">superfaktura_api</span><span class="o">.</span><span class="n">SuperFakturaAPI</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Retrieve data from the SuperFaktura API</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">incoming_data</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;endpoint&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">incoming_data</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'endpoint'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create or update data in the SuperFaktura API</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;endpoint&#39;</span><span class="p">,</span> <span class="n">outgoing_data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'endpoint'</span><span class="p">,</span> <span class="n">outgoing_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
@@ -126,8 +126,8 @@ etc.).</p></li>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">SuperFakturaAPI</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.pdf&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">api</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;some/endpoint&quot;</span><span class="p">,</span> <span class="n">descriptor</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"data.pdf"</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">api</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">"some/endpoint"</span><span class="p">,</span> <span class="n">descriptor</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric">Notes</p>
@@ -159,7 +159,7 @@ etc.).</p></li>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">SuperFakturaAPI</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;invoices&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'invoices'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -194,8 +194,8 @@ to 5.</p></li>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">api</span> <span class="o">=</span> <span class="n">SuperFakturaAPI</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;{&quot;name&quot;: &quot;Example Invoice&quot;, &quot;amount&quot;: 100.0}&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;invoices&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s1">'{"name": "Example Invoice", "amount": 100.0}'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'invoices'</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </pre></div>
 </div>

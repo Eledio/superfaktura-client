@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Index &mdash; SuperFaktura API client  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -172,10 +172,10 @@
         <li><a href="superfaktura.html#superfaktura.invoice.InvoiceModel.comment">(superfaktura.invoice.InvoiceModel attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceModel.comment">[1]</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="superfaktura.html#superfaktura.invoice.InvoiceModel.constant">constant (superfaktura.invoice.InvoiceModel attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceModel.constant">[1]</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="superfaktura.client_contacts.html#superfaktura.client_contacts.ClientContactModel.country">country (superfaktura.client_contacts.ClientContactModel attribute)</a>, <a href="superfaktura.html#superfaktura.client_contacts.ClientContactModel.country">[1]</a>
 </li>
       <li><a href="superfaktura.client_contacts.html#superfaktura.client_contacts.ClientContactModel.country_id">country_id (superfaktura.client_contacts.ClientContactModel attribute)</a>, <a href="superfaktura.html#superfaktura.client_contacts.ClientContactModel.country_id">[1]</a>
@@ -186,8 +186,12 @@
 </li>
       <li><a href="superfaktura.enumerations.currency.html#superfaktura.enumerations.currency.Currencies">Currencies (class in superfaktura.enumerations.currency)</a>, <a href="superfaktura.enumerations.html#superfaktura.enumerations.currency.Currencies">[1]</a>
 </li>
-      <li><a href="superfaktura.client_contacts.html#superfaktura.client_contacts.ClientContactModel.currency">currency (superfaktura.client_contacts.ClientContactModel attribute)</a>, <a href="superfaktura.html#superfaktura.client_contacts.ClientContactModel.currency">[1]</a>
+      <li><a href="superfaktura.bank_account.html#superfaktura.bank_account.BankAccountModel.currency">currency (superfaktura.bank_account.BankAccountModel attribute)</a>, <a href="superfaktura.html#superfaktura.bank_account.BankAccountModel.currency">[1]</a>
+
+      <ul>
+        <li><a href="superfaktura.client_contacts.html#superfaktura.client_contacts.ClientContactModel.currency">(superfaktura.client_contacts.ClientContactModel attribute)</a>, <a href="superfaktura.html#superfaktura.client_contacts.ClientContactModel.currency">[1]</a>
 </li>
+      </ul></li>
       <li><a href="superfaktura.enumerations.currency.html#superfaktura.enumerations.currency.Currencies.CZK">CZK (superfaktura.enumerations.currency.Currencies attribute)</a>, <a href="superfaktura.enumerations.html#superfaktura.enumerations.currency.Currencies.CZK">[1]</a>
 </li>
   </ul></td>
@@ -294,6 +298,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="superfaktura.client_contacts.html#superfaktura.client_contacts.ClientContactModel.fax">fax (superfaktura.client_contacts.ClientContactModel attribute)</a>, <a href="superfaktura.html#superfaktura.client_contacts.ClientContactModel.fax">[1]</a>
 </li>
+      <li><a href="superfaktura.bank_account.html#superfaktura.bank_account.BankAccount.for_currency">for_currency() (superfaktura.bank_account.BankAccount method)</a>, <a href="superfaktura.html#superfaktura.bank_account.BankAccount.for_currency">[1]</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="superfaktura.bank_account.html#superfaktura.bank_account.BankAccountModel.from_dict">from_dict() (superfaktura.bank_account.BankAccountModel static method)</a>, <a href="superfaktura.html#superfaktura.bank_account.BankAccountModel.from_dict">[1]</a>
@@ -356,10 +362,16 @@
 </li>
       <li><a href="superfaktura.html#superfaktura.invoice.InvoiceRespModel.invoice_id">invoice_id (superfaktura.invoice.InvoiceRespModel attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceRespModel.invoice_id">[1]</a>
 </li>
+      <li><a href="superfaktura.html#superfaktura.invoice.InvoiceRespModel.invoice_no">invoice_no (superfaktura.invoice.InvoiceRespModel attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceRespModel.invoice_no">[1]</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="superfaktura.html#superfaktura.invoice.InvoiceModel.invoice_no_formatted">invoice_no_formatted (superfaktura.invoice.InvoiceModel attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceModel.invoice_no_formatted">[1]</a>
+
+      <ul>
+        <li><a href="superfaktura.html#superfaktura.invoice.InvoiceRespModel.invoice_no_formatted">(superfaktura.invoice.InvoiceRespModel attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceRespModel.invoice_no_formatted">[1]</a>
 </li>
+      </ul></li>
       <li><a href="superfaktura.html#superfaktura.invoice.InvoiceRespModel.invoice_token">invoice_token (superfaktura.invoice.InvoiceRespModel attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceRespModel.invoice_token">[1]</a>
 </li>
       <li><a href="superfaktura.html#superfaktura.invoice.InvoiceItem">InvoiceItem (class in superfaktura.invoice)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceItem">[1]</a>
@@ -528,7 +540,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="superfaktura.html#superfaktura.invoice.InvoiceModel.sequence_id">sequence_id (superfaktura.invoice.InvoiceModel attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceModel.sequence_id">[1]</a>
+
+      <ul>
+        <li><a href="superfaktura.html#superfaktura.invoice.InvoiceRespModel.sequence_id">(superfaktura.invoice.InvoiceRespModel attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceRespModel.sequence_id">[1]</a>
 </li>
+      </ul></li>
       <li><a href="superfaktura.bank_account.html#superfaktura.bank_account.BankAccountModel.show">show (superfaktura.bank_account.BankAccountModel attribute)</a>, <a href="superfaktura.html#superfaktura.bank_account.BankAccountModel.show">[1]</a>
 </li>
       <li><a href="superfaktura.html#superfaktura.invoice.InvoiceSettings.show_prices">show_prices (superfaktura.invoice.InvoiceSettings attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceSettings.show_prices">[1]</a>
@@ -669,7 +685,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="superfaktura.html#superfaktura.invoice.InvoiceModel.variable">variable (superfaktura.invoice.InvoiceModel attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceModel.variable">[1]</a>
+
+      <ul>
+        <li><a href="superfaktura.html#superfaktura.invoice.InvoiceRespModel.variable">(superfaktura.invoice.InvoiceRespModel attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceRespModel.variable">[1]</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="superfaktura.html#superfaktura.invoice.InvoiceModel.vat_transfer">vat_transfer (superfaktura.invoice.InvoiceModel attribute)</a>, <a href="superfaktura.invoice.html#superfaktura.invoice.InvoiceModel.vat_transfer">[1]</a>

@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>superfaktura.invoice module &mdash; SuperFaktura API client  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -97,26 +97,26 @@ It allows for retrieving, creating, updating, and deleting invoices.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
 <span class="go">    invoice_model=InvoiceModel(</span>
 <span class="go">        type=InvoiceType.INVOICE,</span>
-<span class="go">        name=&quot;My First Invoice&quot;,</span>
-<span class="go">        due=Date(&quot;2025-04-01&quot;),</span>
+<span class="go">        name="My First Invoice",</span>
+<span class="go">        due=Date("2025-04-01"),</span>
 <span class="go">        invoice_currency=Currencies.EUR,</span>
-<span class="go">        header_comment=&quot;We invoice you for services&quot;,</span>
+<span class="go">        header_comment="We invoice you for services",</span>
 <span class="go">        bank_accounts=[bank.default().as_dict()],</span>
 <span class="go">    ),</span>
 <span class="go">    items=[</span>
 <span class="go">        InvoiceItem(</span>
-<span class="go">            name=&quot;Website Development&quot;, unit_price=1000.0, quantity=1, tax=20</span>
+<span class="go">            name="Website Development", unit_price=1000.0, quantity=1, tax=20</span>
 <span class="go">        ),</span>
 <span class="go">        InvoiceItem(</span>
-<span class="go">            name=&quot;Hosting Service (1 year)&quot;, unit_price=500.0, quantity=1, tax=20</span>
+<span class="go">            name="Hosting Service (1 year)", unit_price=500.0, quantity=1, tax=20</span>
 <span class="go">        ),</span>
 <span class="go">    ],</span>
 <span class="go">    contact=ClientContactModel(</span>
-<span class="go">        name=&quot;John Doe&quot;,</span>
-<span class="go">        email=&quot;john.doe@examle.com&quot;,</span>
-<span class="go">        phone=&quot;+1 555-1234&quot;,</span>
-<span class="go">        address=&quot;123 Main Street, New York&quot;,</span>
-<span class="go">        ico=&quot;987654321&quot;,</span>
+<span class="go">        name="John Doe",</span>
+<span class="go">        email="john.doe@examle.com",</span>
+<span class="go">        phone="+1 555-1234",</span>
+<span class="go">        address="123 Main Street, New York",</span>
+<span class="go">        ico="987654321",</span>
 <span class="go">        update=True,</span>
 <span class="go">        country_id=225,</span>
 <span class="go">    ),</span>
@@ -161,26 +161,26 @@ It allows for retrieving, creating, updating, and deleting invoices.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
 <span class="go">    invoice_model=InvoiceModel(</span>
 <span class="go">        type=InvoiceType.INVOICE,</span>
-<span class="go">        name=&quot;My First Invoice&quot;,</span>
-<span class="go">        due=Date(&quot;2025-04-01&quot;),</span>
+<span class="go">        name="My First Invoice",</span>
+<span class="go">        due=Date("2025-04-01"),</span>
 <span class="go">        invoice_currency=Currencies.EUR,</span>
-<span class="go">        header_comment=&quot;We invoice you for services&quot;,</span>
+<span class="go">        header_comment="We invoice you for services",</span>
 <span class="go">        bank_accounts=[bank.default().as_dict()],</span>
 <span class="go">    ),</span>
 <span class="go">    items=[</span>
 <span class="go">        InvoiceItem(</span>
-<span class="go">            name=&quot;Website Development&quot;, unit_price=1000.0, quantity=1, tax=20</span>
+<span class="go">            name="Website Development", unit_price=1000.0, quantity=1, tax=20</span>
 <span class="go">        ),</span>
 <span class="go">        InvoiceItem(</span>
-<span class="go">            name=&quot;Hosting Service (1 year)&quot;, unit_price=500.0, quantity=1, tax=20</span>
+<span class="go">            name="Hosting Service (1 year)", unit_price=500.0, quantity=1, tax=20</span>
 <span class="go">        ),</span>
 <span class="go">    ],</span>
 <span class="go">    contact=ClientContactModel(</span>
-<span class="go">        name=&quot;John Doe&quot;,</span>
-<span class="go">        email=&quot;john.doe@example.com&quot;,</span>
-<span class="go">        phone=&quot;+1 555-1234&quot;,</span>
-<span class="go">        address=&quot;123 Main Street, New York&quot;,</span>
-<span class="go">        ico=&quot;987654321&quot;,</span>
+<span class="go">        name="John Doe",</span>
+<span class="go">        email="john.doe@example.com",</span>
+<span class="go">        phone="+1 555-1234",</span>
+<span class="go">        address="123 Main Street, New York",</span>
+<span class="go">        ico="987654321",</span>
 <span class="go">        update=True,</span>
 <span class="go">        country_id=225,</span>
 <span class="go">    ),</span>
@@ -515,7 +515,7 @@ It allows for retrieving, creating, updating, and deleting invoices.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">superfaktura.invoice.</span></span><span class="sig-name descname"><span class="pre">InvoiceRespModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invoice_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invoice_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">superfaktura.invoice.</span></span><span class="sig-name descname"><span class="pre">InvoiceRespModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invoice_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invoice_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invoice_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invoice_no_formatted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This dataclass represents the response model for an invoice in the SuperFaktura API.</p>
 <dl class="py attribute">
@@ -563,6 +563,50 @@ It allows for retrieving, creating, updating, and deleting invoices.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">invoice_no</span></span></dt>
+<dd><p>The invoice number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">invoice_no_formatted</span></span></dt>
+<dd><p>The formatted invoice number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">sequence_id</span></span></dt>
+<dd><p>The numbering sequence ID used for the invoice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">variable</span></span></dt>
+<dd><p>The variable symbol of the invoice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel.error">
 <span class="sig-name descname"><span class="pre">error</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel.error" title="Link to this definition"></a></dt>
 <dd></dd></dl>
@@ -578,8 +622,28 @@ It allows for retrieving, creating, updating, and deleting invoices.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel.invoice_no">
+<span class="sig-name descname"><span class="pre">invoice_no</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel.invoice_no" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel.invoice_no_formatted">
+<span class="sig-name descname"><span class="pre">invoice_no_formatted</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel.invoice_no_formatted" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel.invoice_token">
 <span class="sig-name descname"><span class="pre">invoice_token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel.invoice_token" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel.sequence_id">
+<span class="sig-name descname"><span class="pre">sequence_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel.sequence_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="superfaktura.invoice.InvoiceRespModel.variable">
+<span class="sig-name descname"><span class="pre">variable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#superfaktura.invoice.InvoiceRespModel.variable" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
